@@ -7,7 +7,7 @@ fn main() {
     println!("Hello, world!");
     match env::current_dir() {
         Ok(path) => {
-            let entries = ls(path);        
+            let _entries = ls(path).unwrap();
         }
         Err(e) => {
             println!("Unable to get path: {}", e);
