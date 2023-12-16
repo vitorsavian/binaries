@@ -11,13 +11,16 @@ build-pwd:
 	cargo build --bin pwd
 
 grep: build-grep
-	./target/debug/grep $(ARGS)
+	./target/debug/grep $(filter-out $@,$(MAKECMDGOALS))
 
 ls: build-ls
-	./target/debug/ls $(ARGS)
+	./target/debug/ls $(filter-out $@,$(MAKECMDGOALS))
 
 cat: build-cat
-	./target/debug/cat $(ARGS)		
+	./target/debug/cat $(filter-out $@,$(MAKECMDGOALS))
 
 pwd: build-pwd
-	./target/debug/pwd $(ARGS)
+	./target/debug/pwd
+
+%:
+	@:
