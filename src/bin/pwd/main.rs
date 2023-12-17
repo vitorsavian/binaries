@@ -1,6 +1,5 @@
-use std::env;
+use binaries::cmd::pwd::run;
 
 fn main() {
-    let path = env::current_dir().unwrap();
-    println!("{}", path.display());
+    run();
 }
