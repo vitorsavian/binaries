@@ -1,4 +1,4 @@
-use std::env;
+use crate::domain::pwd;
 
 pub fn run() {
     let _cmd = clap::Command::new("pwd")
@@ -6,8 +6,5 @@ pub fn run() {
         .version("1.0.0")
         .get_matches();
 
-    match env::current_dir() {
-        Ok(path) => println!("{}", path.display()),
-        Err(e) => println!("{}", e),
-    }
+    pwd::program();
 }
