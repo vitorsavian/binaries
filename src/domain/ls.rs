@@ -1,7 +1,18 @@
-use std::{env, os::unix::fs::PermissionsExt};
+use std::{env, os::unix::fs::PermissionsExt, path::Path};
 
-pub fn program() {
-    let path = env::current_dir().unwrap();
+pub fn program(dir: &str) {
+    
+    let mut path = Path::new(dir).to_path_buf();
+    if dir != "" {
+
+        let first_char = dir.chars().next().unwrap();
+        if first_char == '.' {
+            path = env::current_dir().unwrap().join(dir);
+        } 
+
+    } else {
+        path = env::current_dir().unwrap();
+    }
 
     path.read_dir().unwrap()
         .for_each(|entry| {
