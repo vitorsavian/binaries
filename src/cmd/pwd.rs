@@ -6,5 +6,5 @@ pub fn run() {
         .version("1.0.0")
         .get_matches();
 
-    pwd::program();
+    pwd::program()
 }
