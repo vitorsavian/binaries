@@ -1,4 +1,7 @@
+extern crate colorful;
+
 use std::{env, os::unix::fs::PermissionsExt};
+use colorful::{Color, Colorful};
 
 pub struct Cli {
     pub dir: String,
@@ -34,11 +37,11 @@ pub fn program(program: &self::Cli) {
                     0o555 => "r-xr-xr-x",
                     _ => "---------",
                 };
-
-                println!("{:?}\t{}", permissions_string, dir.file_name().to_str().unwrap());
+                println!("{}\t{}", permissions_string.color(Color::Yellow).bold(), dir.file_name().to_str().unwrap());
                 return;
             } else {
                 println!("{}", dir.file_name().to_str().unwrap());
+                return;
             }
         });
 }
