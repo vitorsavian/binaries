@@ -1,4 +1,4 @@
-use crate::domain::ls;
+use crate::domain::ls::Cli;
 use clap::{Arg, App};
 
 pub fn run() {
@@ -19,7 +19,7 @@ pub fn run() {
 
     let dir = cmd.value_of("dir").unwrap_or("");
     let perm = cmd.is_present("permissions");
-    let cli = ls::new(dir, perm);
 
-    ls::program(&cli)
+    let cli = Cli::new(dir, perm);
+    cli.program();
 }
